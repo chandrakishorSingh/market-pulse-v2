@@ -11,6 +11,24 @@
     <ion-list>
       <ion-menu-toggle>
         <ion-item lines="none" routerLink="/home/tabs/watchlist">
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/funds">
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          <ion-label>Funds</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/notifications">
+          <ion-icon name="notifications-outline" slot="start"></ion-icon>
+          <ion-label>Notifications</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/home/tabs/watchlist">
           <ion-icon name="log-out-outline" slot="start"></ion-icon>
           <ion-label>Logout</ion-label>
         </ion-item>
@@ -20,5 +38,6 @@
 </ion-menu>
 
 <ion-app>
+  <ion-backdrop *ngIf="isModalOpen" (ionBackdropTap)="onBackDropClick()"></ion-backdrop>
   <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

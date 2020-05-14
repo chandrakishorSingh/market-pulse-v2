@@ -14,6 +14,14 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'funds',
+    loadChildren: () => import('./funds/funds.module').then( m => m.FundsPageModule)
   }
 ];
 

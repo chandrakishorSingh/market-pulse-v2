@@ -1,0 +1,51 @@
+ion-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.new-watchlist {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem;
+  border-bottom: 0.5px solid var(--ion-color-medium);
+}
+
+.new-watchlist > ion-icon {
+  margin: 0 1rem 0 0;
+}
+
+.new-watchlist > span {
+  color: var(--ion-color-primary);
+}
+
+.watchlist {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 0.5px solid var(--ion-color-medium);
+}
+
+.watchlist span {
+  color: var(--ion-color-dark);
+}
+
+.watchlist-start {
+  display: flex;
+}
+
+.watchlist-end {
+  display: flex;
+}
+
+.watchlist-end > ion-icon {
+  margin: 0 0 0 1.5rem;
+}
+
+.spacer {
+  width: 2.5rem;
+  height: 1.5rem;
+}
+
+.selected-icon {
+  margin: 0 1rem 0 0;
+}

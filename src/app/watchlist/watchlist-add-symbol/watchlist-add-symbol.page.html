@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-icon size="large" src="../../../assets/svg/arrow-left.svg" slot="start" routerLink="/home/tabs/watchlist"></ion-icon>
+    <ion-input autofocus #input (ionChange)="onInputChange($event)" placeholder="Enter text to search" slot="start"></ion-input>
+    <ion-icon size="large" name="close-outline" slot="end" (click)="onCancel(input)"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isEditing">
+    <div class="stock-item" *ngFor="let stock of listedStocks">
+      <p class="stock-name">{{ stock.symbol }}</p>
+      <button class="stock-btn btn-add" *ngIf="!stock.selected" (click)="onStockAdd(stock)">ADD</button>
+      <button class="stock-btn btn-remove" *ngIf="stock.selected" (click)="onStockRemove(stock)">REMOVE</button>
+    </div>
+  </div>
+</ion-content>

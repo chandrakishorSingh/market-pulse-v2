@@ -1,0 +1,15 @@
+<div class="watch-item">
+  <p class="symbol">{{ watchItem.symbol | uppercase }}</p>
+  <div class="price-stats">
+    <div class="price-latest">
+      <ion-icon src="../../../assets/svg/rupee.svg"></ion-icon>
+      <p>{{ watchItem.latestPrice }}</p>
+    </div>
+    <div class="price-change">
+      <p>{{ formatPriceChange(watchItem.change) }}</p>
+<!--      <p>{{ (watchItem.change > 0 ? '+ ' : '- ') + abs(watchItem.change) }}</p>-->
+      <p>{{ '(' + watchItem.changePercentage + '%)' }}</p>
+<!--      <p>{{ '(' + watchItem.changePercentage + '%)' }}</p>-->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<ion-list>
+  <div class="new-watchlist" (click)="onCreateWatchlist()">
+    <ion-icon name="add-outline" color="primary"></ion-icon>
+    <span>Create new watchlist</span>
+  </div>
+  <div class="watchlists">
+    <div class="watchlist" *ngFor="let watchlist of watchlists; let i = index;">
+      <div class="watchlist-start" (click)="onWatchlistSelect(watchlist.name)">
+        <ion-icon class="selected-icon" name="checkmark-outline" color="primary" *ngIf="selectedWatchListName === watchlist.name"></ion-icon>
+        <span class="spacer" *ngIf="selectedWatchListName !== watchlist.name"></span>
+        <span>{{ watchlist.name }}</span>
+      </div>
+      <div class="watchlist-end">
+        <ion-icon *ngIf="i !== 0" name="trash-outline" (click)="onWatchlistDelete(watchlist.name)"></ion-icon>
+        <ion-icon name="pencil-outline" (click)="onWatchlistEdit(watchlist.name)"></ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-list>
+

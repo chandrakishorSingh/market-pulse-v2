@@ -1,5 +1,7 @@
 {
   "name": "market-pulse-v2",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

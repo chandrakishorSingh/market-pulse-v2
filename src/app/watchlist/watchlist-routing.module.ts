@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: WatchlistPage
+  },
+  {
+    path: 'add-symbol',
+    loadChildren: () => import('./watchlist-add-symbol/watchlist-add-symbol.module').then( m => m.WatchlistAddSymbolPageModule)
   }
 ];
 

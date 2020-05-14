@@ -1,0 +1,47 @@
+@import "src/global";
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ion-toolbar > ion-icon {
+  margin: 0 1rem;
+}
+
+ion-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 0.5px solid var(--ion-color-medium);
+}
+
+.stock-name {
+  font-size: $font-size-1;
+  color: var(--ion-color-dark);
+}
+
+.stock-btn {
+  width: 92px;
+  height: 32px;
+  padding: 8px 16px;
+  background-color: white;
+}
+
+.btn-add {
+  border: 1px solid var(--ion-color-success);
+  border-radius: 10px;
+  color: var(--ion-color-success);
+}
+
+.btn-remove {
+  border: 1px solid var(--ion-color-danger);
+  border-radius: 10px;
+  color: var(--ion-color-danger);
+}

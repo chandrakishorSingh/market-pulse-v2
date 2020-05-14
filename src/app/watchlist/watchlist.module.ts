@@ -8,13 +8,23 @@ import { WatchlistPageRoutingModule } from './watchlist-routing.module';
 
 import { WatchlistPage } from './watchlist.page';
 
+import {WatchItemComponent} from './watch-item/watch-item.component';
+import {WatchlistSelectComponent} from './watchlist-select/watchlist-select.component';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    WatchlistPageRoutingModule
+    WatchlistPageRoutingModule,
   ],
-  declarations: [WatchlistPage]
+  declarations: [
+    WatchItemComponent,
+    WatchlistPage,
+    WatchlistSelectComponent
+  ],
+  entryComponents: [
+    WatchlistSelectComponent
+  ]
 })
 export class WatchlistPageModule {}

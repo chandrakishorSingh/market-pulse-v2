@@ -1,9 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>watchlist</ion-title>
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title slot="start">
+      <div class="watchlist-picker">
+        <div (click)="onSelectWatchList()">
+          <ion-label>Watchlist</ion-label>
+          <ion-icon color="light" name="chevron-down-outline"></ion-icon>
+        </div>
+        <p>{{ selectedWatchListName }}</p>
+      </div>
+    </ion-title>
+    <ion-item class="sort" color="primary" slot="end">
+      <ion-icon size="large" src="../assets/svg/arrow-up-down.svg" slot="end" (click)="onSortByOpen(selectRef)">
+        <ion-item>
+          <ion-label>SORT BY</ion-label>
+          <ion-select (ionChange)="onSortBy($event)" [value]="sortBy" #selectRef>
+            <ion-select-option [value]="sortOption.sortBy" *ngFor="let sortOption of sortOptions">{{ sortOption.name }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-icon>
+      <ion-icon size="large" name="add-circle-outline" slot="end" routerLink="add-symbol"></ion-icon>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <app-watch-item *ngFor="let watchItem of watchItems" [watchItem]="watchItem"></app-watch-item>
 </ion-content>
