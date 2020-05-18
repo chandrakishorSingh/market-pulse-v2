@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WatchlistService} from '../services/watchlist.service';
-import {IonInput} from '@ionic/angular';
+import {IonInput, LoadingController} from '@ionic/angular';
 
 interface Stock {
   symbol: string;
@@ -19,9 +19,13 @@ export class WatchlistAddSymbolPage implements OnInit {
   watchlistStocks: Stock[] = [];
   isEditing = false;
 
-  constructor(private watchlistService: WatchlistService) {}
+  constructor(private watchlistService: WatchlistService,
+              private loadingCtrl: LoadingController) {}
 
   async ngOnInit() {
+    // show loading component while app fetches the symbols from backend
+    const loadingEle = await this.loadingCtrl.create({ message: 'Loading...' });
+    await loadingEle.present();
     // determine current watchlist
     const selectedWatchlistName = this.watchlistService.selectedWatchlistName;
     const selectedWatchlist = this.watchlistService.getWatchListByName(selectedWatchlistName);
@@ -37,6 +41,7 @@ export class WatchlistAddSymbolPage implements OnInit {
       })
     );
     console.log(this.allStocks);
+    await loadingEle.dismiss();
   }
 
   onInputChange(event: CustomEvent) {

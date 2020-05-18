@@ -1,5 +1,8 @@
 import {Observable} from 'rxjs';
 
+export type SortMethod = 'alphabetically' | 'reverse-alphabetically' | 'price' | 'reverse-price' | 'percentage' | 'reverse-percentage';
+export type SignalType = 'buy' | 'sell';
+
 export const extractSymbols = () => {
     return (source: Observable<{ symbols: string[] }>) => {
         return new Observable<string[]>(observer => {
@@ -24,12 +27,11 @@ export const toTitleCase = (str: string) => {
 
 export const toPrecision = (n: number, precision = 2) => Number(Number(n).toPrecision(precision));
 
-export type SortMethod = 'alphabetically' | 'reverse-alphabetically' | 'price' | 'reverse-price' | 'percentage' | 'reverse-percentage';
 export const sortOptions: { sortBy: SortMethod, name: string }[] = [
     { sortBy: 'alphabetically', name: 'Alphabetically \'A - Z\'' },
     { sortBy: 'reverse-alphabetically', name: 'Alphabetically \'Z - A\'' },
-    { sortBy: 'price', name: 'Price High to Low' },
     { sortBy: 'reverse-price', name: 'Price Low to High' },
-    { sortBy: 'percentage', name: 'Percentage High to Low' },
+    { sortBy: 'price', name: 'Price High to Low' },
     { sortBy: 'reverse-percentage', name: 'Percentage Low to High' },
+    { sortBy: 'percentage', name: 'Percentage High to Low' },
 ];

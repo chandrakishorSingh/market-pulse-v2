@@ -1,0 +1,24 @@
+<div class="order">
+  <div class="order-status">
+    <div class="order-status-info">
+      <div class="order-status-circle"></div>
+      <span class="order-status-description">COMPLETE</span>
+    </div>
+    <div class="order-date">{{ order.date }}</div>
+  </div>
+  <div class="order-symbol">{{ order.symbol }}</div>
+  <div class="order-stats">
+    <div class="order-type">
+      <div class="order-type-description">SIDE</div>
+      <div [class]="order.signalType === 'buy' ? 'text-success' : 'text-danger'">{{ order.signalType | uppercase }}</div>
+    </div>
+    <div class="order-qty">
+      <div class="order-qty-description">QTY</div>
+      <div class="order-qty-number">{{ order.quantity }}</div>
+    </div>
+    <div class="order-price">
+      <div class="order-price-description">PRICE</div>
+      <div class="order-price-number">{{ order.price }}</div>
+    </div>
+  </div>
+</div>

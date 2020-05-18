@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewChildren} from '@angular/core';
+import {Order} from "../models/models";
+import {OrderService} from "./services/order.service";
+import {IonInput, LoadingController} from "@ionic/angular";
 
 @Component({
   selector: 'app-orders',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersPage implements OnInit {
 
-  constructor() { }
+  allOrders: Order[] = [];
+  listedOrders: Order[] = [];
+  isSearching = false;
 
-  ngOnInit() {
+  constructor(private orderService: OrderService) {}
+
+  async ionViewWillEnter() {
+    this.allOrders = await this.orderService.getOrders();
+    this.listedOrders = this.allOrders;
+    console.log(this.allOrders);
+  }
+
+  ngOnInit() {}
+
+  onOrderSearch() {
+    this.isSearching = true;
+  }
+
+  async onCancel(inputRef: IonInput) {
+    inputRef.value = '';
+    await inputRef.setFocus();
+    this.isSearching = false;
+    this.listedOrders = this.allOrders;
+  }
+
+  onInputChange(event: CustomEvent) {
+    const symbol = event.detail.value.toUpperCase();
+    this.listedOrders = this.allOrders.filter(order => order.symbol.startsWith(symbol));
   }
 
 }

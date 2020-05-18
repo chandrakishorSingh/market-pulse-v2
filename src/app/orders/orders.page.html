@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>orders</ion-title>
+  <ion-toolbar color="primary">
+    <!--  Non-search mode  -->
+    <ion-menu-button slot="start" *ngIf="!isSearching"></ion-menu-button>
+    <ion-title *ngIf="!isSearching">Order History</ion-title>
+    <ion-item color="primary" slot="end" *ngIf="!isSearching">
+      <ion-icon name="search-outline" (click)="onOrderSearch()"></ion-icon>
+    </ion-item>
+    <!--  Search mode  -->
+    <div class="searchbar" *ngIf="isSearching">
+      <ion-icon
+        class="icon"
+        size="large"
+        src="../../../assets/svg/arrow-left.svg"
+        slot="start"
+        (click)="onCancel(inputRef)"></ion-icon>
+      <ion-input
+        autofocus
+        #inputRef
+        (ionChange)="onInputChange($event)"
+        placeholder="Enter text to search"
+        slot="start"></ion-input>
+      <ion-icon class="icon" size="large" name="close-outline" slot="end" (click)="onCancel(inputRef)"></ion-icon>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <app-order-item *ngFor="let order of listedOrders" [order]="order"></app-order-item>
 </ion-content>

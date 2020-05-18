@@ -1,0 +1,90 @@
+@import "src/global";
+
+.order {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid var(--ion-color-dark);
+}
+
+.order-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.order-status-info {
+  display: flex;
+  align-items: center;
+}
+
+.order-status-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--ion-color-success);
+  margin-right: 0.5rem;
+}
+
+.order-status-description {
+  color: var(--ion-color-dark);
+  font-size: $font-size-2;
+}
+
+.order-date {
+  color: var(--ion-color-dark);
+  font-size: $font-size-2;
+}
+
+.order-symbol {
+  color: var(--ion-color-dark);
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.order-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-type {
+  display: flex;
+  align-items: baseline;
+}
+
+.order-type-description {
+  color: var(--ion-color-dark);
+  font-size: $font-size-2;
+  margin-right: 0.5rem;
+}
+
+.text-success {
+  color: var(--ion-color-success);
+}
+
+.text-danger {
+  color: var(--ion-color-danger);
+}
+
+.order-qty {
+  display: flex;
+  align-items: baseline;
+}
+
+.order-qty-description {
+  color: var(--ion-color-dark);
+  font-size: $font-size-2;
+  margin-right: 0.5rem;
+}
+
+.order-price {
+  display: flex;
+  align-items: baseline;
+}
+
+.order-price-description {
+  color: var(--ion-color-dark);
+  font-size: $font-size-2;
+  margin-right: 0.5rem;
+}
