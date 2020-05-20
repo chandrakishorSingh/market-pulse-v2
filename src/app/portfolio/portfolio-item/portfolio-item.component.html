@@ -1,0 +1,27 @@
+<div class="portfolio-item" (click)="onShowPortfolioItemDetail()">
+  <div class="symbol-and-quantity">
+    <div class="symbol">{{ portfolioItem.symbol }}</div>
+    <div class="quantity-block">
+      <div class="quantity-description">NET QTY</div>
+      <div class="quantity">{{ portfolioItem.quantity }}</div>
+    </div>
+  </div>
+  <div class="portfolio-item-stats">
+    <div class="ltp-block">
+      <div class="ltp">LTP</div>
+      <ion-icon src="../../assets/svg/rupee.svg"></ion-icon>
+      <div class="ltp-price">{{ portfolioItem.latestPrice }}</div>
+    </div>
+    <div class="pl-block">
+      <div class="pl">P&L</div>
+      <div
+        [ngStyle]="portfolioItem.profitLoss > 0 ? { color: 'var(--ion-color-success)' } : { color: 'var(--ion-color-danger)' }"
+        class="minus-sign" *ngIf="portfolioItem.profitLoss < 0">-</div>
+      <ion-icon src="../../assets/svg/rupee.svg"></ion-icon>
+      <div
+        [ngStyle]="portfolioItem.profitLoss > 0 ? { color: 'var(--ion-color-success)' } : { color: 'var(--ion-color-danger)' }"
+        class="pl-price"
+      >{{ portfolioItem.profitLoss > 0 ? portfolioItem.profitLoss : -portfolioItem.profitLoss }}</div>
+    </div>
+  </div>
+</div>

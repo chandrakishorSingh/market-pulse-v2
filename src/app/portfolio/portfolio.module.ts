@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { PortfolioPageRoutingModule } from './portfolio-routing.module';
 
 import { PortfolioPage } from './portfolio.page';
+import {PortfolioItemComponent} from './portfolio-item/portfolio-item.component';
+import {PortfolioItemDetailComponent} from './portfolio-item/portfolio-item-detail/portfolio-item-detail.component';
+import {PortfolioService} from "./services/portfolio.service";
 
 @NgModule({
   imports: [
@@ -15,6 +18,16 @@ import { PortfolioPage } from './portfolio.page';
     IonicModule,
     PortfolioPageRoutingModule
   ],
-  declarations: [PortfolioPage]
+  declarations: [
+    PortfolioPage,
+    PortfolioItemComponent,
+    PortfolioItemDetailComponent
+  ],
+  providers: [
+    PortfolioService
+  ],
+  entryComponents: [
+    PortfolioItemDetailComponent
+  ]
 })
 export class PortfolioPageModule {}

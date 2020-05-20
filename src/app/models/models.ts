@@ -25,3 +25,16 @@ export class Order {
               public price: number,
               public date: string) {}
 }
+
+export class PortfolioItem {
+  constructor(public symbol: string,
+              public quantity: number,
+              public latestPrice: number,
+              public profitLoss: number,
+              public profitLossPercentage: number,
+              public dayProfitLoss: number,
+              public avgPrice: number,
+              public totalInvestment: number,
+              public currentValue: number) {}
+
+}

@@ -1,0 +1,97 @@
+@import "src/global";
+
+.success {
+  color: var(--ion-color-success);
+}
+
+.danger {
+  color: var(--ion-color-danger);
+}
+
+.portfolio-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 0.2px solid #c2c2c2;
+  background-color: var(--ion-color-light);
+}
+
+.symbol-and-quantity {
+  display: flex;
+  flex-direction: column;
+}
+
+.symbol {
+  color: var(--ion-color-dark);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-block {
+  display: flex;
+  align-items: baseline;
+  margin: 0.5rem 0;
+}
+
+.quantity-description {
+  color: var(--ion-color-medium);
+  font-size: $font-size-3;
+  margin-right: 0.5rem;
+}
+
+.portfolio-item-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.ltp-block {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.ltp-block ion-icon {
+  width: 18px;
+  height: 18px;
+  align-self: flex-start;
+}
+
+.ltp-block .ltp-price {
+  font-size: $font-size-1;
+}
+
+.ltp-block .ltp {
+  color: var(--ion-color-medium);
+  font-size: $font-size-3;
+  margin-right: 0.5rem;
+}
+
+.pl-block {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  margin: 5px 0;
+}
+
+.pl-block .pl {
+  color: var(--ion-color-medium);
+  font-size: $font-size-3;
+  margin-right: 0.5rem;
+}
+
+.pl-block .minus-sign {
+  align-self: start;
+  margin-right: 0.25rem;
+  font-weight: bold;
+}
+
+.pl-block ion-icon {
+  width: 18px;
+  height: 18px;
+  align-self: flex-start;
+}
+
+.pl-block .pl-price {
+  font-size: $font-size-1;
+}

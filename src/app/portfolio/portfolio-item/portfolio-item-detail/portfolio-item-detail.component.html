@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="header">
+    <div class="header-line-1">
+      <div class="symbol">{{ portfolioItem.symbol }}</div>
+      <div class="ltp-block">
+        <div class="ltp-description">LTP</div>
+        <ion-icon src="../../../assets/svg/rupee.svg"></ion-icon>
+        <div class="ltp">{{ portfolioItem.latestPrice }}</div>
+      </div>
+    </div>
+    <div class="header-line-2">
+      <div class="net-quantity-block">
+        <div class="net-quantity-description">NET QTY</div>
+        <div class="net-quantity">{{ portfolioItem.quantity }}</div>
+      </div>
+      <div class="pl-block">
+        <div class="pl-description">P&L</div>
+        <div class="minus-sign" *ngIf="portfolioItem.profitLoss < 0">-</div>
+        <ion-icon src="../../../assets/svg/rupee.svg"></ion-icon>
+        <div class="pl" [ngStyle]="getStyle(portfolioItem.profitLoss)">{{ abs(portfolioItem.profitLoss) }} {{ '(' + abs(portfolioItem.profitLossPercentage) + ' %)' }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-left">
+      <div class="avg-price-block">
+        <div class="avg-price-description">Average Price</div>
+        <div class="avg-price">{{ portfolioItem.avgPrice }}</div>
+      </div>
+      <div class="quantity-block">
+        <div class="quantity-description">Total Qty</div>
+        <div class="quantity">{{ portfolioItem.quantity }}</div>
+      </div>
+      <div class="total-investment-block">
+        <div class="total-investment-description">Total Invt.</div>
+        <div class="total-investment">{{ portfolioItem.totalInvestment }}</div>
+      </div>
+    </div>
+    <div class="content-right">
+      <div class="day-pl-block">
+        <div class="day-pl-description">Day P&L</div>
+        <div class="day-pl" [ngStyle]="getStyle(portfolioItem.dayProfitLoss)">{{ abs(portfolioItem.dayProfitLoss) }}</div>
+      </div>
+      <div class="current-value-block">
+        <div class="current-value-description">Current Value</div>
+        <div class="current-value">{{ portfolioItem.currentValue }}</div>
+      </div>
+    </div>
+  </div>
+</div>

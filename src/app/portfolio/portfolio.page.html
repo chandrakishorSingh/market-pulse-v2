@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>portfolio</ion-title>
+  <ion-toolbar color="primary">
+    <!--  Non-Search mode  -->
+    <ion-menu-button slot="start" *ngIf="!isSearching"></ion-menu-button>
+    <ion-title *ngIf="!isSearching">Portfolio</ion-title>
+    <ion-item slot="end" color="primary" *ngIf="!isSearching">
+      <ion-icon name="search-outline" (click)="onSearch()"></ion-icon>
+    </ion-item>
+    <!--  Search mode  -->
+    <div class="searchbar" *ngIf="isSearching">
+      <ion-icon
+        class="icon"
+        size="large"
+        src="../../../assets/svg/arrow-left.svg"
+        slot="start"
+        (click)="onCancel(inputRef)"></ion-icon>
+      <ion-input
+        autofocus
+        #inputRef
+        (ionChange)="onInputChange($event)"
+        placeholder="Enter text to search"
+        slot="start"></ion-input>
+      <ion-icon class="icon" size="large" name="close-outline" slot="end" (click)="onCancel(inputRef)"></ion-icon>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <app-portfolio-item *ngFor="let portfolioItem of listedPortfolioItems" [portfolioItem]="portfolioItem"></app-portfolio-item>
 </ion-content>

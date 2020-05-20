@@ -1,0 +1,192 @@
+@import "src/global";
+
+.success {
+  color: var(--ion-color-success);
+}
+
+.danger {
+  color: var(--ion-color-danger);
+}
+
+.minus-sign {
+  padding-right: 4px;
+}
+
+ion-icon {
+  width: 18px;
+  height: 18px;
+  padding-right: 0.25rem;
+}
+
+.container {
+  padding: 1.5rem 0;
+  background-color: var(--ion-color-light);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  border-bottom: 0.5px solid var(--ion-color-medium);
+}
+
+.header-line-1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem
+}
+
+.header-line-1 .symbol {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.header-line-1 .ltp-block {
+  display: flex;
+}
+
+.header-line-1 .ltp-block .ltp-description {
+  font-size: $font-size-2;
+  padding-right: 0.75rem;
+  color: #353535;
+}
+
+.header-line-1 .ltp-block .ltp {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.header-line-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem
+}
+
+.header-line-2 .net-quantity-block {
+  display: flex;
+}
+
+.header-line-2 .net-quantity-block .net-quantity-description {
+  font-size: $font-size-2;
+  padding-right: 0.75rem;
+  color: #353535;
+}
+
+.header-line-2 .net-quantity-block .net-quantity {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.header-line-2 .pl-block {
+  display: flex;
+}
+
+.header-line-2 .pl-block .pl-description {
+  font-size: $font-size-2;
+  padding-right: 0.75rem;
+  color: #353535;
+}
+
+.header-line-2 .pl-block .pl {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  padding: 1.5rem 1rem;
+}
+
+.content .content-left {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-right: 1rem;
+}
+
+.content-left .avg-price-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.content-left .avg-price-block .avg-price-description {
+  font-size: $font-size-2;
+  color: #353535;
+}
+
+.content-left .avg-price-block .avg-price {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.content-left .quantity-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.content-left .quantity-block .quantity-description {
+  font-size: $font-size-2;
+  color: #353535;
+}
+
+.content-left .quantity-block .quantity {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.content-left .total-investment-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.content-left .total-investment-block .total-investment-description {
+  font-size: $font-size-2;
+  color: #353535;
+}
+
+.content-left .total-investment-block .total-investment {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.content .content-right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.content-right .day-pl-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.content-right .day-pl-block .day-pl-description {
+  font-size: $font-size-2;
+  color: #353535;
+}
+
+.content-right .day-pl-block .day-pl {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.content-right .current-value-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.content-right .current-value-block .current-value-description {
+  font-size: $font-size-2;
+  color: #353535;
+}
+
+.content-right .current-value-block .current-value {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
