@@ -1,0 +1,45 @@
+@import "src/global";
+
+ion-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.container {
+  margin: 4rem 1.5rem;
+  background-color: #d7d8da87;
+  border-radius: 10px;
+}
+
+.trade-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.trade-description {
+  font-size: 18px;
+}
+
+.trade-stats {
+  display: flex;
+  align-items: center;
+}
+
+.rupee-icon {
+  margin-right: 0.25rem;
+}
+
+.up-down-icon {
+  margin-left: 0.75rem;
+}
+
+.fund-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.fund-summary {
+  padding: 0 1rem 1rem 1rem;
+}

@@ -8,6 +8,8 @@ import { FundsPageRoutingModule } from './funds-routing.module';
 
 import { FundsPage } from './funds.page';
 
+import {FundsService} from './services/funds.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,11 @@ import { FundsPage } from './funds.page';
     IonicModule,
     FundsPageRoutingModule
   ],
-  declarations: [FundsPage]
+  declarations: [
+    FundsPage
+  ],
+  providers: [
+    FundsService
+  ]
 })
 export class FundsPageModule {}

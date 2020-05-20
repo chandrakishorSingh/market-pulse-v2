@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FundsService} from "./services/funds.service";
 
 @Component({
   selector: 'app-funds',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FundsPage implements OnInit {
 
-  constructor() { }
+  funds: number;
+  iconMap = {
+    up: 'chevron-up-outline',
+    down: 'chevron-down-outline'
+  };
+  isSummaryOpened = false;
+
+  constructor(private fundsService: FundsService) {}
 
   ngOnInit() {
+    this.funds = this.fundsService.getFunds();
+  }
+
+  onClick() {
+    this.isSummaryOpened = !this.isSummaryOpened;
   }
 
 }

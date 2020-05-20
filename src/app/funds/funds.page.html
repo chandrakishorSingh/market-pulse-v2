@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>funds</ion-title>
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Funds</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="container">
+    <div class="trade-block">
+      <div class="trade-description">Available to trade</div>
+      <div class="trade-stats">
+        <ion-icon class="rupee-icon" src="../assets/svg/rupee.svg"></ion-icon>
+        <div class="fund-value">{{ funds }}</div>
+        <ion-icon class="up-down-icon" (click)="onClick()" [name]="isSummaryOpened ? iconMap['up'] : iconMap['down']"></ion-icon>
+      </div>
+    </div>
+    <div class="fund-summary" *ngIf="isSummaryOpened">This is the total amount that you have available to trade at the moment.</div>
+  </div>
 </ion-content>
