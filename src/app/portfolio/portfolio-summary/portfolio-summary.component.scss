@@ -1,0 +1,49 @@
+ion-icon {
+  width: 16px;
+  height: 16px;
+  margin: 0 8px;
+}
+
+.minus-sign {
+  padding: 0 0.5rem;
+}
+
+.success {
+  color: var(--ion-color-success);
+}
+
+.danger {
+  color: var(--ion-color-danger);
+}
+
+.pl-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  background-color: #a6a6a66e;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.item:first-of-type {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.item:last-of-type {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.item {
+  padding: 0.5rem 0;
+}
+
+.border-bottom {
+  border-bottom: 0.5px solid var(--ion-color-dark);
+}

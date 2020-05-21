@@ -1,0 +1,46 @@
+<div class="pl-container">
+  <div
+    *ngIf="isSummaryOpened"
+    class="d-flex ion-justify-content-between item">
+    <div>Current Value</div>
+    <div class="d-flex ">
+      <ion-icon class="icon" src="../assets/svg/rupee.svg"></ion-icon>
+      <div>{{ portfolioSummary.currentValue }}</div>
+    </div>
+  </div>
+  <div
+    *ngIf="isSummaryOpened"
+    class="d-flex ion-justify-content-between item">
+    <div>Total Investment</div>
+    <div class="d-flex ">
+      <ion-icon class="icon" src="../assets/svg/rupee.svg"></ion-icon>
+      <div>{{ portfolioSummary.totalInvestment }}</div>
+    </div>
+  </div>
+  <div
+    *ngIf="isSummaryOpened"
+    class="d-flex ion-justify-content-between item border-bottom">
+    <div>Day P&L</div>
+    <div class="d-flex ">
+      <div class="minus-sign" *ngIf="portfolioSummary.dayPl < 0">-</div>
+      <ion-icon class="icon" src="../assets/svg/rupee.svg"></ion-icon>
+      <div
+        [class]="portfolioSummary.dayPl > 0 ? 'success' : 'danger'"
+      >{{ abs(portfolioSummary.dayPl) }}</div>
+    </div>
+  </div>
+  <div
+    class="d-flex ion-justify-content-between item">
+    <div class="d-flex ">
+      <div>P&L</div>
+      <ion-icon (click)="onSummaryClick()" class="icon" [name]="isSummaryOpened ? iconMap['down'] : iconMap['up']"></ion-icon>
+    </div>
+    <div class="d-flex ">
+      <div class="minus-sign" *ngIf="portfolioSummary.pl < 0">-</div>
+      <ion-icon class="icon" src="../assets/svg/rupee.svg"></ion-icon>
+      <div
+        [class]="portfolioSummary.dayPl > 0 ? 'success' : 'danger'"
+      >{{ abs(portfolioSummary.pl) }} {{ '(' + abs(portfolioSummary.plPercentage) + '%)' }}</div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
 import {PortfolioItem} from '../../models/models';
+import {PortfolioSummary} from '../../utils/utils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PortfolioService {
+
+  portfolioSummary: PortfolioSummary = {
+    currentValue: 50000,
+    totalInvestment: 55000,
+    dayPl: 2000,
+    pl: 5000,
+    plPercentage: 10
+  };
 
   portfolio: PortfolioItem[] = [
     {
@@ -54,11 +63,11 @@ export class PortfolioService {
   ];
 
   constructor() {
-    this.portfolio = this.getPortfolio();
+    this.portfolio = this.getPortfolio().portfolio;
   }
 
   getPortfolio() {
-    return [...this.portfolio];
+    return { portfolio: [...this.portfolio], portfolioSummary: {...this.portfolioSummary} }
     // TODO: fetch the portfolio from database
   }
 }

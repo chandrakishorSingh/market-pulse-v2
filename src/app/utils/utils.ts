@@ -2,6 +2,13 @@ import {Observable} from 'rxjs';
 
 export type SortMethod = 'alphabetically' | 'reverse-alphabetically' | 'price' | 'reverse-price' | 'percentage' | 'reverse-percentage';
 export type SignalType = 'buy' | 'sell';
+export interface PortfolioSummary {
+    currentValue: number;
+    totalInvestment: number;
+    dayPl: number;
+    pl: number;
+    plPercentage: number;
+}
 
 export const extractSymbols = () => {
     return (source: Observable<{ symbols: string[] }>) => {

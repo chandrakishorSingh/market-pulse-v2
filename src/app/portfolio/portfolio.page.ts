@@ -17,7 +17,7 @@ export class PortfolioPage implements OnInit {
   constructor(private portfolioService: PortfolioService) {}
 
   ngOnInit() {
-    this.allPortfolioItems = this.portfolioService.getPortfolio();
+    this.allPortfolioItems = this.portfolioService.getPortfolio().portfolio;
     this.listedPortfolioItems = this.allPortfolioItems;
   }
 
