@@ -11,8 +11,8 @@ export class PortfolioService {
     currentValue: 50000,
     totalInvestment: 55000,
     dayPl: 2000,
-    pl: 5000,
-    plPercentage: 10
+    pl: -5000,
+    plPercentage: -10
   };
 
   portfolio: PortfolioItem[] = [

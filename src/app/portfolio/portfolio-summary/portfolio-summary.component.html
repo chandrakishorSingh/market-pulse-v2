@@ -39,7 +39,7 @@
       <div class="minus-sign" *ngIf="portfolioSummary.pl < 0">-</div>
       <ion-icon class="icon" src="../assets/svg/rupee.svg"></ion-icon>
       <div
-        [class]="portfolioSummary.dayPl > 0 ? 'success' : 'danger'"
+        [class]="portfolioSummary.pl > 0 ? 'success' : 'danger'"
       >{{ abs(portfolioSummary.pl) }} {{ '(' + abs(portfolioSummary.plPercentage) + '%)' }}</div>
     </div>
   </div>
