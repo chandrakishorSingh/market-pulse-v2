@@ -1,34 +1,32 @@
-<ion-menu contentId="main-content" side="start">
+<ion-menu #menuCtrl contentId="main-content" side="start" [disabled]="!isAuthenticated">
   <ion-header>
-    <ion-toolbar>
-      <ion-avatar slot="start">
-      </ion-avatar>
-      <ion-title>{{ 'displayName' | titlecase }}</ion-title>
+    <ion-toolbar color="primary">
+      <ion-title class="menu-title" *ngIf="user">{{ user.firstName + ' ' + user.lastName | titlecase }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <ion-menu-toggle>
-        <ion-item lines="none" routerLink="/home/tabs/watchlist">
+    <ion-list class="menu-item-list">
+      <ion-menu-toggle (click)="onMenuItemClick(menuCtrl, '/home/tabs/watchlist')">
+        <ion-item lines="none">
           <ion-icon name="home-outline" slot="start"></ion-icon>
           <ion-label>Home</ion-label>
         </ion-item>
       </ion-menu-toggle>
-      <ion-menu-toggle>
-        <ion-item lines="none" routerLink="/funds">
+      <ion-menu-toggle (click)="onMenuItemClick(menuCtrl, '/funds')">
+        <ion-item lines="none">
           <ion-icon name="cash-outline" slot="start"></ion-icon>
           <ion-label>Funds</ion-label>
         </ion-item>
       </ion-menu-toggle>
-      <ion-menu-toggle>
-        <ion-item lines="none" routerLink="/notifications">
+      <ion-menu-toggle (click)="onMenuItemClick(menuCtrl, '/notifications')">
+        <ion-item lines="none">
           <ion-icon name="notifications-outline" slot="start"></ion-icon>
           <ion-label>Notifications</ion-label>
         </ion-item>
       </ion-menu-toggle>
-      <ion-menu-toggle>
-        <ion-item lines="none" routerLink="/home/tabs/watchlist">
+      <ion-menu-toggle class="logout">
+        <ion-item color="primary" lines="none" (click)="onLogout()">
           <ion-icon name="log-out-outline" slot="start"></ion-icon>
           <ion-label>Logout</ion-label>
         </ion-item>

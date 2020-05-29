@@ -5,6 +5,7 @@ import {WatchlistSelectComponent} from './watchlist-select/watchlist-select.comp
 import {ModalService} from '../shared-services/modal.service';
 import { WatchItem} from '../models/models';
 import {SortMethod, sortOptions} from '../utils/utils';
+import {NotificationService} from "../shared-services/notification.service";
 
 @Component({
   selector: 'app-watchlist',
@@ -21,7 +22,8 @@ export class WatchlistPage implements OnInit {
 
   constructor(private watchlistService: WatchlistService,
               private modalService: ModalService,
-              private modalCtrl: ModalController) {}
+              private modalCtrl: ModalController,
+              private pushService: NotificationService) {}
 
   ngOnInit() {
     this.selectedWatchListName = this.watchlistService.selectedWatchlistName;

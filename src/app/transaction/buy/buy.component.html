@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start" defaultHref="/notifications"></ion-back-button>
+    <ion-title>Place Order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-card class="card">
+      <ion-card-header>
+        <ion-card-title class="card-title">
+          <div class="symbol">{{ notificationItem.symbol }}</div>
+          <div class="ltp-block">
+            <div class="ltp">LTP</div>
+            <ion-icon src="../assets/svg/rupee.svg"></ion-icon>
+            <div class="ltp-price">{{ notificationItem.ltp }}</div>
+          </div>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="d-flex">
+          <ion-item class="item">
+            <ion-label position="floating">Enter Quantity</ion-label>
+            <ion-input formControlName="quantity" type="number"></ion-input>
+          </ion-item>
+          <ion-item class="item">
+            <ion-label position="floating">{{ notificationItem.signalType | uppercase }} Price</ion-label>
+            <ion-input disabled #price type="number" [value]="form.get('quantity').value * notificationItem.ltp" required></ion-input>
+          </ion-item>
+        </div>
+        <ion-text
+          *ngIf="form.get('quantity').value * notificationItem.ltp > 50000"
+        >You can only buy stocks of value at most 50000 per day per stock</ion-text>
+        <ion-text *ngIf="form.get('quantity').invalid"
+        >Quantity should be a positive integer.</ion-text>
+        <ion-button
+          [disabled]="isDisabled()"
+          type="submit"
+          class="action-button"
+          expand="block" fill="solid"
+          color="success">
+          <span>{{ notificationItem.signalType | uppercase }}</span>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

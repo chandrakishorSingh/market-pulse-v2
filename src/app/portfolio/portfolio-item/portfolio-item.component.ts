@@ -24,7 +24,7 @@ export class PortfolioItemComponent implements OnInit {
       component: PortfolioItemDetailComponent,
       componentProps: { portfolioItem: this.portfolioItem }
     }).then(page => {
-      page.style.marginTop = '30rem';
+      page.style.marginTop = 'calc(100vh - 252px)';
       return page;
     });
     await portfolioDetailModal.present();

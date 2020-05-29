@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { NotificationsPageRoutingModule } from './notifications-routing.module';
 
 import { NotificationsPage } from './notifications.page';
+import {NotificationItemComponent} from "./notification-item/notification-item.component";
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { NotificationsPage } from './notifications.page';
     IonicModule,
     NotificationsPageRoutingModule
   ],
-  declarations: [NotificationsPage]
+  declarations: [
+    NotificationsPage,
+    NotificationItemComponent
+  ]
 })
 export class NotificationsPageModule {}

@@ -1,0 +1,39 @@
+@import "src/global";
+
+.success {
+  color: var(--ion-color-success);
+}
+
+.danger {
+  color: var(--ion-color-danger);
+}
+
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 0.2px solid #c2c2c2;
+  background-color: var(--ion-color-light);
+}
+
+.symbol {
+  color: var(--ion-color-dark);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  color: var(--ion-color-dark);
+  font-size: $font-size-3;
+  margin-bottom: 1rem;
+}
+
+.details-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.disabled {
+
+}

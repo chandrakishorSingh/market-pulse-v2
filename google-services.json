@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "778334513091",
+    "firebase_url": "https://market-pulse-v2.firebaseio.com",
+    "project_id": "market-pulse-v2",
+    "storage_bucket": "market-pulse-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778334513091:android:03249d6574ac37c529bf76",
+        "android_client_info": {
+          "package_name": "com.be.market_pulse_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778334513091-kj2ug3hjcmf7gs2qomojknvn42isbfs1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwFX9QbufyuIK3stSgZIWNcVa_oZfS560"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778334513091-kj2ug3hjcmf7gs2qomojknvn42isbfs1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

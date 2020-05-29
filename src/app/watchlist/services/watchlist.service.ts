@@ -83,7 +83,7 @@ export class WatchlistService {
   }
 
   getSymbols(): Promise<string[]> {
-    return this.http.get<{ symbols: string[] }>(environment.api.getSymbolsUrl).pipe(extractSymbols()).toPromise();
+    return this.http.get<{ symbols: string[] }>(environment.api.getSymbols).pipe(extractSymbols()).toPromise();
   }
 
   selectWatchlist(watchlistName: string) {

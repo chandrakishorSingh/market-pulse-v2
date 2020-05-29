@@ -38,3 +38,21 @@ export class PortfolioItem {
               public currentValue: number) {}
 
 }
+
+export class User {
+  constructor(public firstName: string,
+              public lastName: string,
+              public email: string,
+              public phoneNumber: string,
+              public createdAt: string,
+              public deviceToken: string) {}
+}
+
+export class NotificationItem {
+
+  constructor(public symbol: string,
+              public signalType: string,
+              public createdAt: string,
+              public ltp: number) {}
+
+}

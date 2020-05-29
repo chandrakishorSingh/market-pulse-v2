@@ -1,0 +1,9 @@
+<div class="notification-item">
+  <div class="symbol">{{ notificationItem.symbol }}</div>
+  <div class="details">
+    <div class="details-block">
+      <div class="date">{{ notificationItem.createdAt }}</div>
+      <div [class]="notificationItem.signalType === 'buy' ? 'success' : 'danger'">{{ notificationItem.signalType | uppercase }}</div>
+    </div>
+  </div>
+</div>

@@ -7,8 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { AuthPageRoutingModule } from './auth-routing.module';
 
 import { AuthPage } from './auth.page';
-import {SigninComponent} from "./signin/signin.component";
-import {SignupComponent} from "./signup/signup.component";
+import {SigninComponent} from './signin/signin.component';
+import {SignupComponent} from './signup/signup.component';
+import {ConfirmSignupComponent} from './confirm-signup/confirm-signup.component';
+import {DatabaseService} from "../shared-services/database.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -16,12 +19,14 @@ import {SignupComponent} from "./signup/signup.component";
     ReactiveFormsModule,
     FormsModule,
     IonicModule,
-    AuthPageRoutingModule
+    AuthPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     AuthPage,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    ConfirmSignupComponent
   ]
 })
 export class AuthPageModule {}

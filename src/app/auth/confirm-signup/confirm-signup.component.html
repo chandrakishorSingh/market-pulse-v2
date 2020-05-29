@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <h1 class="message" *ngIf="confirmationStatus === 'old'">Your phone verification is pending. Please enter the OTP to verify it.</h1>
+        <h1 class="message" *ngIf="confirmationStatus === 'new'">Please enter the OTP to verify it.</h1>
+        <ion-col>
+          <ion-list>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Enter 6 digit OTP</ion-label>
+                  <ion-input clearInput type="text" formControlName="otp"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button type="submit" color="primary" expand="block" [disabled]="!form.valid">
+            Verify Phone Number
+          </ion-button>
+          <ion-button (click)="onResendOtp()" type="button" expand="block" fill="blank" color="primary" [disabled]="timer > 0">
+            Resend OTP {{ timer === 0 ? '' : ' after ' + this.timer + 's' }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

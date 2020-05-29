@@ -67,7 +67,11 @@ export class PortfolioService {
   }
 
   getPortfolio() {
-    return { portfolio: [...this.portfolio], portfolioSummary: {...this.portfolioSummary} }
+    return { portfolio: [...this.portfolio], portfolioSummary: {...this.portfolioSummary} };
     // TODO: fetch the portfolio from database
+  }
+
+  getPortfolioItem(symbol: string) {
+    return this.getPortfolio().portfolio.find(item => item.symbol === symbol);
   }
 }
