@@ -8,7 +8,7 @@ import { OrdersPageRoutingModule } from './orders-routing.module';
 
 import { OrdersPage } from './orders.page';
 import {OrderItemComponent} from './order-item/order-item.component';
-import {OrderService} from "./services/order.service";
+import {OrderService} from './services/order.service';
 
 @NgModule({
   imports: [

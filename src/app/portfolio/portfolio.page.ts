@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PortfolioItem} from "../models/models";
-import {PortfolioService} from "./services/portfolio.service";
-import {IonInput} from "@ionic/angular";
+import {PortfolioItem} from '../models/models';
+import {PortfolioService} from './services/portfolio.service';
+import {IonInput} from '@ionic/angular';
 
 @Component({
   selector: 'app-portfolio',
@@ -16,13 +16,20 @@ export class PortfolioPage implements OnInit {
 
   constructor(private portfolioService: PortfolioService) {}
 
-  ngOnInit() {
-    this.allPortfolioItems = this.portfolioService.getPortfolio().portfolio;
+  async ngOnInit() {}
+
+  async ionViewWillEnter() {
+    this.allPortfolioItems = (await this.portfolioService.getPortfolio()).portfolio;
     this.listedPortfolioItems = this.allPortfolioItems;
   }
 
   onSearch() {
     this.isSearching = true;
+  }
+
+  async onRefresh(event) {
+    await this.ionViewWillEnter();
+    event.target.complete();
   }
 
   async onCancel(inputRef: IonInput) {

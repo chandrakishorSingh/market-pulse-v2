@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import {Push, PushObject} from '@ionic-native/push/ngx';
 import {AlertController} from '@ionic/angular';
-import {wait} from '../utils/utils';
+import {mapServerResponse} from '../utils/utils';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {UserService} from '../auth/services/user.service';
 import {NotificationItem, User} from '../models/models';
-import {formatDate} from '../utils/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +15,7 @@ export class NotificationService {
 
   pushObject: PushObject;
   token: string;
-  notificationItems: NotificationItem[] = [
-    { symbol: 'ADANIPOWER', signalType: 'buy', createdAt: '2020-05-28', ltp: 32.42 },
-    { symbol: 'ICICIBANK', signalType: 'buy', createdAt: '2020-05-28', ltp: 310.2 },
-    { symbol: 'HINDUNILVR', signalType: 'sell', createdAt: '2020-05-28', ltp: 2020 },
-    { symbol: 'HDFCBANK', signalType: 'buy', createdAt: '2020-05-28', ltp: 940 }
-  ];
+  notificationItems: NotificationItem[] = [];
 
   constructor(private push: Push,
               private alertCtrl: AlertController,
@@ -30,20 +24,14 @@ export class NotificationService {
   }
 
   async registerPushNotification() {
-    // following line is for testing
-    // this.storeDeviceToken('');
-
-    // waiting for some time to let the app initialize
-    // await wait(5000);
     this.pushObject = this.push.init({
       android: {
-        senderID: '778334513091'
+        senderID: environment.senderID
       }
     });
     // register the `register` handler
     this.pushObject.on('registration').subscribe(async (registration: any) => {
       this.token = registration.registrationId;
-      // this.alertCtrl.create({ message: JSON.stringify(registration) }).then(al => al.present());
       this.storeDeviceToken(this.token);
     });
 
@@ -53,7 +41,6 @@ export class NotificationService {
 
   subscribeNotificationHandler() {
     this.pushObject.on('notification').subscribe((notification: any) => {
-      // TODO: redirect to transaction page
       this.alertCtrl.create({ message: JSON.stringify(notification) }).then(a => a.present());
     });
   }
@@ -71,14 +58,16 @@ export class NotificationService {
   }
 
   async getNotifications() {
-    // this.notificationItems = getFromServer
+    const user = await this.userService.getUser();
+    const phoneNumber = user.phoneNumber.replace('+', '');
+    const result = await this.http.get(environment.api.getNotifications + `?phoneNumber=%2B${phoneNumber}`).toPromise() as any;
+    const notifications = result.notifications.Notifications.map((item) => mapServerResponse(item)) as NotificationItem[];
+    // user can only place a order before 8AM of next trading day and after 6PM of current trading day.
+    this.notificationItems = notifications.filter(() => new Date().getHours() < 8 || new Date().getHours() > 18);
     return [...this.notificationItems];
-    // TODO: fetch actual notifications from db later and use pipe() to filter out all of the notification if
-    // the current time is greater than 9 AM.
   }
 
   getNotificationItem(index: number) {
-    const item = this.notificationItems[index];
-    return item;
+    return this.notificationItems[index];
   }
 }

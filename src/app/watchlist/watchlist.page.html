@@ -25,5 +25,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <app-watch-item *ngFor="let watchItem of watchItems" [watchItem]="watchItem"></app-watch-item>
+  <div class="empty-list" *ngIf="watchItems.length === 0">
+    <h4>You haven't added any stocks yet!</h4>
+    <p>Add stocks you want to track by clicking on + button above and follow them with just a click</p>
+  </div>
 </ion-content>

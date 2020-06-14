@@ -26,6 +26,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <app-portfolio-item *ngFor="let portfolioItem of listedPortfolioItems" [portfolioItem]="portfolioItem"></app-portfolio-item>
   <app-portfolio-summary></app-portfolio-summary>
+  <div class="empty-list" *ngIf="allPortfolioItems.length === 0">
+    Your portfolio is empty! Make a new order in next trading day to see your portfolio.
+  </div>
 </ion-content>

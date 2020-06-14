@@ -28,3 +28,10 @@ ion-title {
   margin-left: 1rem;
 }
 
+.empty-list {
+  padding: 15vh 2rem 2rem 2rem;
+  vertical-align: center;
+  color: var(--ion-color-medium);
+  font-size: $font-size-1;
+}
+

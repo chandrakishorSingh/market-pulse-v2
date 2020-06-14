@@ -20,32 +20,24 @@ export class WatchlistService {
 
   watchLists: IWatchlist[] = [
     { name: 'Favourites', symbols: ['ITC', 'INFY', 'TECHM'] },
-    { name: 'Oil', symbols: ['BPCL', 'GAIL'] },
-    { name: 'Telecom', symbols: ['BHARTIARTL', 'IDEA'] },
-    { name: 'Banks', symbols: ['INDUSINDBK', 'ICICIBANK', 'HDFC'] },
-    { name: 'Medicine', symbols: ['SUNPHARMA'] },
   ];
-  watchItems: WatchItem[] = [
-    new WatchItem('SUNPHARMA', 464.45, 477.45),
-    new WatchItem('HDFC', 87.90, 87.40),
-    new WatchItem('ITC', 182.05, 182.15),
-    new WatchItem('INFY', 715.50, 673),
-  ];
+  watchItems: WatchItem[] = [];
 
-  constructor(private http: HttpClient,
-              private storage: Storage) {
+  constructor(private http: HttpClient, private storage: Storage) {}
+
+  async initializeWatchlistService() {
     // store the watchlists in device: intended for first time open
-    this.storage.ready().then(async () => {
-      if (await this.hasWatchlistNative()) {
-        this.watchLists = await this.storage.get('watchlists');
-        this.selectedWatchlistName = await this.storage.get('selectedWatchlistName');
-      } else {
-        await this.storage.set('watchlists', this.watchLists);
-        this.selectedWatchlistName = this.watchLists[0].name;
-        await this.storage.set('selectedWatchlistName', this.selectedWatchlistName);
-      }
-      this.selectedWatchlistNameSubject.next(this.selectedWatchlistName);
-    });
+    await this.storage.ready();
+    if (await this.hasWatchlistNative()) {
+      this.watchLists = await this.storage.get('watchlists');
+      this.selectedWatchlistName = await this.storage.get('selectedWatchlistName');
+    } else {
+      await this.storage.set('watchlists', this.watchLists);
+      this.selectedWatchlistName = this.watchLists[0].name;
+      await this.storage.set('selectedWatchlistName', this.selectedWatchlistName);
+    }
+    await this.getWatchItems(this.selectedWatchlistName);
+    this.selectedWatchlistNameSubject.next(this.selectedWatchlistName);
   }
 
   async hasWatchlistNative() {
@@ -86,16 +78,18 @@ export class WatchlistService {
     return this.http.get<{ symbols: string[] }>(environment.api.getSymbols).pipe(extractSymbols()).toPromise();
   }
 
-  selectWatchlist(watchlistName: string) {
+  async selectWatchlist(watchlistName: string) {
     this.selectedWatchlistName = watchlistName;
-    this.watchItems = this.getWatchItems(watchlistName);
+    this.watchItems = await this.getWatchItems(watchlistName);
     this.selectedWatchlistNameSubject.next(this.selectedWatchlistName);
-    this.storage.set('selectedWatchlistName', this.selectedWatchlistName);
+    await this.storage.set('selectedWatchlistName', this.selectedWatchlistName);
   }
 
-  getWatchItems(watchlistName: string): WatchItem[] {
+  async getWatchItems(watchlistName: string) {
+    const symbols = this.watchLists.find(item => item.name === watchlistName).symbols;
+    const result = await this.http.post(environment.api.getWatchItems, { symbols }).toPromise() as any;
+    this.watchItems = result.watchItems;
     return this.sortWatchItems(this.sortBy);
-    // TODO: later fetch the results from backend
   }
 
   sortWatchItems(sortMethod: SortMethod) {
@@ -126,6 +120,7 @@ export class WatchlistService {
     // make the first watchlist the selected one if the current one is deleted
     if (isSelected) {
       this.selectedWatchlistName = this.watchLists[0].name;
+      await this.storage.set('selectedWatchlistName', this.selectedWatchlistName);
       this.selectedWatchlistNameSubject.next(this.selectedWatchlistName);
     }
   }

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WatchlistService} from '../services/watchlist.service';
 import {IWatchlist} from '../../models/models';
-import {AlertController, ModalController} from '@ionic/angular';
+import {AlertController, LoadingController, ModalController} from '@ionic/angular';
 import {ModalService} from '../../shared-services/modal.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class WatchlistSelectComponent implements OnInit {
   constructor(private watchlistService: WatchlistService,
               private modalService: ModalService,
               private modalCtrl: ModalController,
-              private alertCtrl: AlertController) { }
+              private alertCtrl: AlertController,
+              private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
     this.watchlists = this.watchlistService.getWatchLists();
@@ -29,9 +30,12 @@ export class WatchlistSelectComponent implements OnInit {
     });
   }
 
-  onWatchlistSelect(name: string) {
-    this.watchlistService.selectWatchlist(name);
+  async onWatchlistSelect(name: string) {
     this.modalService.closeModal();
+    const loadingElem = await this.loadingCtrl.create({ message: 'Loading...' });
+    await loadingElem.present();
+    await this.watchlistService.selectWatchlist(name);
+    await loadingElem.dismiss();
   }
 
   async onCreateWatchlist() {

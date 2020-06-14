@@ -30,6 +30,16 @@ export const integerValidator = (control: AbstractControl): ValidationErrors => 
   return Number.isInteger(control.value) && control.value > 0 ? null : { message: 'Quantity should be a positive integer.' };
 };
 
+export const maxValidator = (max: number) => {
+    return (control: AbstractControl): ValidationErrors => {
+      const isValid = control.value <= max;
+      console.log(`value is `, control.value);
+      console.log(`max is `, max);
+      console.log(isValid);
+      return isValid ? null : { message: `Value should be less than ${max}` };
+    };
+};
+
 
 
 

@@ -10,8 +10,7 @@ import { AuthPage } from './auth.page';
 import {SigninComponent} from './signin/signin.component';
 import {SignupComponent} from './signup/signup.component';
 import {ConfirmSignupComponent} from './confirm-signup/confirm-signup.component';
-import {DatabaseService} from "../shared-services/database.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [

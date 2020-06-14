@@ -26,7 +26,7 @@
           </ion-item>
           <ion-item class="item">
             <ion-label position="floating">{{ notificationItem.signalType | uppercase }} Price</ion-label>
-            <ion-input disabled #price type="number" [value]="form.get('quantity').value * notificationItem.ltp" required></ion-input>
+            <ion-input disabled #price type="number" [value]="(form.get('quantity').value * notificationItem.ltp).toFixed(2)" required></ion-input>
           </ion-item>
         </div>
         <ion-text

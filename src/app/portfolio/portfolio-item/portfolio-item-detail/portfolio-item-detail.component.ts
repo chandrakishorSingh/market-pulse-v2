@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ModalController} from "@ionic/angular";
-import {ModalService} from "../../../shared-services/modal.service";
-import {PortfolioItem} from "../../../models/models";
+import {ModalController} from '@ionic/angular';
+import {ModalService} from '../../../shared-services/modal.service';
+import {PortfolioItem} from '../../../models/models';
 
 @Component({
   selector: 'app-portfolio-item-detail',

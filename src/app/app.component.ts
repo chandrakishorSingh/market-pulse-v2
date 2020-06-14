@@ -1,22 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AlertController, IonMenu,
-  IonMenuToggle,
   LoadingController,
-  MenuController,
-  ModalController,
   Platform
 } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import {WatchlistService} from './watchlist/services/watchlist.service';
 import {ModalService} from './shared-services/modal.service';
-import {AuthService} from "./auth/services/auth.service";
-import {Router} from "@angular/router";
-import {NotificationService} from "./shared-services/notification.service";
-import {UserService} from "./auth/services/user.service";
-import {User} from "./models/models";
+import {AuthService} from './auth/services/auth.service';
+import {Router} from '@angular/router';
+import {UserService} from './auth/services/user.service';
+import {User} from './models/models';
 
 @Component({
   selector: 'app-root',

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, ViewChildren} from '@angular/core';
-import {Order} from "../models/models";
-import {OrderService} from "./services/order.service";
-import {IonInput, LoadingController} from "@ionic/angular";
+import {Order} from '../models/models';
+import {OrderService} from './services/order.service';
+import {IonInput, LoadingController} from '@ionic/angular';
 
 @Component({
   selector: 'app-orders',
@@ -19,7 +19,11 @@ export class OrdersPage implements OnInit {
   async ionViewWillEnter() {
     this.allOrders = await this.orderService.getOrders();
     this.listedOrders = this.allOrders;
-    console.log(this.allOrders);
+  }
+
+  async onRefresh(event) {
+    await this.ionViewWillEnter();
+    event.target.complete();
   }
 
   ngOnInit() {}

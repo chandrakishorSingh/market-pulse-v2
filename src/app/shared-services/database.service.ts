@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams, HttpUrlEncodingCodec} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {mapServerResponse} from "../utils/utils";
+import {mapServerResponse} from '../utils/utils';
 
 @Injectable({
   providedIn: 'root'

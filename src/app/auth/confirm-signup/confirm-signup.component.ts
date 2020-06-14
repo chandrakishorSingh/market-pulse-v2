@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {otpValidator} from '../../custom-validators/validator';
-import {AlertController} from "@ionic/angular";
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-confirm-signup',
@@ -32,7 +32,6 @@ export class ConfirmSignupComponent implements OnInit {
   onSubmit() {
     this.authService.confirmRegistration('' + this.form.value.otp)
       .then(async result => {
-        console.log('after confirmRegistration result', result);
         if (result === 'SUCCESS') {
           await this.router.navigate(['/', 'auth', 'signin']);
           await this.alertCtrl.create({
@@ -42,7 +41,6 @@ export class ConfirmSignupComponent implements OnInit {
         }
       })
       .catch(async err => {
-        console.log('after confirmRegistration err', err);
         if (err.code === 'CodeMismatchException') {
           await this.alertCtrl.create({ header: 'Invalid OTP' , message: 'Entered OTP is wrong!' }).then(alert => alert.present());
         } else if (err.code === 'NotAuthorizedException') {

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {NotificationItem} from "../../models/models";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {NotificationService} from "../../shared-services/notification.service";
-import {UserService} from "../../auth/services/user.service";
-import {HttpClient} from "@angular/common/http";
-import {AlertController, LoadingController} from "@ionic/angular";
-import {integerValidator} from "../../custom-validators/validator";
-import {environment} from "../../../environments/environment";
-import {PortfolioService} from "../../portfolio/services/portfolio.service";
+import {NotificationItem} from '../../models/models';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NotificationService} from '../../shared-services/notification.service';
+import {UserService} from '../../auth/services/user.service';
+import {HttpClient} from '@angular/common/http';
+import {AlertController, LoadingController} from '@ionic/angular';
+import {integerValidator, maxValidator} from '../../custom-validators/validator';
+import {environment} from '../../../environments/environment';
+import {PortfolioService} from '../../portfolio/services/portfolio.service';
 
 @Component({
   selector: 'app-sell',
@@ -30,10 +30,10 @@ export class SellComponent implements OnInit {
               private router: Router,
               private portfolioService: PortfolioService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const notificationItemIndex = +this.acRoute.snapshot.paramMap.get('id');
     this.notificationItem = this.notificationService.getNotificationItem(notificationItemIndex);
-    this.maxQuantity = this.portfolioService.getPortfolioItem(this.notificationItem.symbol).quantity;
+    this.maxQuantity = (await this.portfolioService.getPortfolioItem(this.notificationItem.symbol)).quantity;
     this.initializeForm();
   }
 
@@ -42,7 +42,7 @@ export class SellComponent implements OnInit {
       quantity: new FormControl(1,
         [Validators.required,
           integerValidator,
-          Validators.max(this.maxQuantity)]
+          maxValidator(this.maxQuantity)]
       ),
     });
   }

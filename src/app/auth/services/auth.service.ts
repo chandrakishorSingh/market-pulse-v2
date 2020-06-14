@@ -11,7 +11,7 @@ import {
 } from 'amazon-cognito-identity-js';
 import {environment} from '../../../environments/environment';
 import {Subject} from 'rxjs';
-import {UserService} from "./user.service";
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +46,6 @@ export class AuthService {
 
     return new Promise((resolve, reject) => {
       this.userPool.signUp(phoneNumber, password, attributeList, null, (err, result) => {
-        // console.log('err is ', err);
-        // console.log('result is ', result);
         err ? reject(err) : resolve(result);
       });
     });
@@ -86,7 +84,6 @@ export class AuthService {
     };
     this.cognitoUser = new CognitoUser(userData);
     const that = this;
-    console.log('cognito user', this.cognitoUser);
     return new Promise((resolve, reject) => {
       this.cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess(result) {
@@ -104,9 +101,6 @@ export class AuthService {
   }
 
   async logout() {
-    console.log('cognito user of logout', this.cognitoUser);
-    console.log('isAuthenticated in logout', this.isAuthenticated);
-    // this.cognitoUser.signOut();
     await this.userService.clearUserData();
 
     this.isAuthenticated = false;

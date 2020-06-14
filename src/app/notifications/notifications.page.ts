@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationItem, PortfolioItem} from '../models/models';
 import {NotificationService} from '../shared-services/notification.service';
-import {IonInput} from "@ionic/angular";
-import {Router} from "@angular/router";
+import {IonInput} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
@@ -18,7 +18,9 @@ export class NotificationsPage implements OnInit {
   constructor(private notificationService: NotificationService,
               private router: Router) {}
 
-  async ngOnInit() {
+  async ngOnInit() {}
+
+  async ionViewWillEnter() {
     this.allNotificationItems = await this.notificationService.getNotifications();
     this.listedNotificationItems = this.allNotificationItems;
   }

@@ -40,7 +40,6 @@ export class WatchlistAddSymbolPage implements OnInit {
         return { symbol, selected: false };
       })
     );
-    console.log(this.allStocks);
     await loadingEle.dismiss();
   }
 

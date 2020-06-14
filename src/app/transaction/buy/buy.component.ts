@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {NotificationItem} from "../../models/models";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {NotificationService} from "../../shared-services/notification.service";
-import {UserService} from "../../auth/services/user.service";
-import {HttpClient} from "@angular/common/http";
-import {AlertController, LoadingController} from "@ionic/angular";
-import {integerValidator} from "../../custom-validators/validator";
-import {environment} from "../../../environments/environment";
+import {NotificationItem} from '../../models/models';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NotificationService} from '../../shared-services/notification.service';
+import {UserService} from '../../auth/services/user.service';
+import {HttpClient} from '@angular/common/http';
+import {AlertController, LoadingController} from '@ionic/angular';
+import {integerValidator} from '../../custom-validators/validator';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-buy',
@@ -52,11 +52,11 @@ export class BuyComponent implements OnInit {
     const price = this.notificationItem.ltp;
 
     const orderData = { phoneNumber: user.phoneNumber, signalType, symbol, quantity, price };
-    this.http.post(environment.api.placeOrder, orderData).toPromise().then(async () => {
+    this.http.post(environment.api.placeOrder, orderData).toPromise().then(async (result: any) => {
       await loadingEle.dismiss();
       await this.alertCtrl.create({
-        header: 'Order Placed!',
-        message: `Your order of ${symbol.toUpperCase()} for ${quantity} was placed successfully`
+        header: result.title,
+        message: result.message
       }).then(a => a.present());
       await this.router.navigate(['/', 'notifications']);
     }).catch(async err => {

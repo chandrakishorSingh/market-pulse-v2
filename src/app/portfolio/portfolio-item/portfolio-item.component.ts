@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PortfolioItem} from '../../models/models';
-import {ModalController} from "@ionic/angular";
-import {ModalService} from "../../shared-services/modal.service";
-import {PortfolioItemDetailComponent} from "./portfolio-item-detail/portfolio-item-detail.component";
+import {ModalController} from '@ionic/angular';
+import {ModalService} from '../../shared-services/modal.service';
+import {PortfolioItemDetailComponent} from './portfolio-item-detail/portfolio-item-detail.component';
 
 @Component({
   selector: 'app-portfolio-item',

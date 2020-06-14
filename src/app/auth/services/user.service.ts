@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Storage} from '@ionic/storage';
-import {User} from "../../models/models";
-import {Subject} from "rxjs";
-import {CognitoUser} from "amazon-cognito-identity-js";
+import {User} from '../../models/models';
+import {Subject} from 'rxjs';
+import {CognitoUser} from 'amazon-cognito-identity-js';
 
 @Injectable({
   providedIn: 'root'

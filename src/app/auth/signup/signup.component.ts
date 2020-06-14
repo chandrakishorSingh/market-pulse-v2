@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {validator} from '../../custom-validators/validator';
 import {AuthService} from '../services/auth.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AlertController, LoadingController} from "@ionic/angular";
-import {DatabaseService} from "../../shared-services/database.service";
+import {Router} from '@angular/router';
+import {AlertController, LoadingController} from '@ionic/angular';
+import {DatabaseService} from '../../shared-services/database.service';
 
 @Component({
   selector: 'app-signup',
@@ -48,13 +48,11 @@ export class SignupComponent implements OnInit {
 
     this.authService.signup(email, firstName, lastName, password, phone)
       .then(async data => {
-        // console.log('signup successful', data);
         await loadingEle.dismiss();
         await this.router.navigate(['/', 'auth', 'confirm-signup', 'new']);
       })
       .catch(async err => {
         await loadingEle.dismiss();
-        // console.log('error', err);
         if (err.code === 'UsernameExistsException') {
           await this.router.navigate(['/', 'auth', 'confirm-signup', 'old']);
           await this.authService.resendConfirmationCode();
@@ -62,10 +60,6 @@ export class SignupComponent implements OnInit {
           this.alertCtrl.create({ header: 'Error', message: err.message || 'Unknown Error' }).then(alertEle => alertEle.present());
         }
       });
-  }
-
-  onGetUserData() {
-    // this.dbService.getUserData();
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="pl-container">
+<div class="pl-container" *ngIf="portfolioSummary && portfolioSummary.totalInvestment !== 0">
   <div
     *ngIf="isSummaryOpened"
     class="d-flex ion-justify-content-between item">

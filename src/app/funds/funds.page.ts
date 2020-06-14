@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FundsService} from "./services/funds.service";
+import {FundsService} from './services/funds.service';
+import {LoadingController} from '@ionic/angular';
 
 @Component({
   selector: 'app-funds',
@@ -15,10 +16,23 @@ export class FundsPage implements OnInit {
   };
   isSummaryOpened = false;
 
-  constructor(private fundsService: FundsService) {}
+  constructor(private fundsService: FundsService,
+              private loadingCtrl: LoadingController) {}
 
-  ngOnInit() {
-    this.funds = this.fundsService.getFunds();
+  async ngOnInit() {}
+
+  async ionViewWillEnter() {
+    const loadingEle = await this.loadingCtrl.create({ message: 'Loading...' });
+    await loadingEle.present();
+
+    this.funds = await this.fundsService.getFunds();
+
+    await loadingEle.dismiss();
+  }
+
+  async onRefresh(event) {
+    await this.ionViewWillEnter();
+    event.target.complete();
   }
 
   onClick() {

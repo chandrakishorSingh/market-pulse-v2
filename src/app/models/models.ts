@@ -1,4 +1,4 @@
-import {SignalType} from "../utils/utils";
+import {SignalType} from '../utils/utils';
 
 export interface IWatchlist {
   name: string;
@@ -23,7 +23,7 @@ export class Order {
               public signalType: SignalType,
               public quantity: number,
               public price: number,
-              public date: string) {}
+              public createdAt: string) {}
 }
 
 export class PortfolioItem {

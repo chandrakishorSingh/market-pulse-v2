@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import {Order} from '../../models/models';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {UserService} from '../../auth/services/user.service';
+import {mapServerResponse} from '../../utils/utils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  orders: Order[] = [
-    { symbol: 'ADANIPOWER', date: '2020-03-12', price: 36, quantity: 40, signalType: 'sell' },
-    { symbol: 'INFY', date: '2020-03-04', price: 677, quantity: 2, signalType: 'buy' },
-    { symbol: 'TCS', date: '2020-05-12', price: 3, quantity: 6, signalType: 'sell' },
-    { symbol: 'IDEA', date: '2020-04-12', price: 1, quantity: 240, signalType: 'buy' },
-    { symbol: 'CIPLA', date: '2020-03-12', price: 39, quantity: 23, signalType: 'sell' },
-  ];
+  orders: Order[] = [];
 
-  constructor() {}
+  constructor(private http: HttpClient,
+              private userService: UserService) {}
 
   async getOrders() {
-    return [...this.orders];
-    // TODO: later fetch the actual orders from db
-  }
-
-  placeOrder() {
-    // TODO:
+    const user = await this.userService.getUser();
+    const phoneNumber = user.phoneNumber.replace('+', '');
+    const result = await this.http.get(environment.api.getOrders + `?phoneNumber=%2B${phoneNumber}`).toPromise() as any;
+    this.orders = (result.trades.map(item => mapServerResponse(item)) as Order[]).reverse();
+    return this.orders;
   }
 }

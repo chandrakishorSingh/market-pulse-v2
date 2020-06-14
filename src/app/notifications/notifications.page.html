@@ -30,4 +30,7 @@
     *ngFor="let notificationItem of listedNotificationItems; let i = index;"
     [notificationItem]="notificationItem"
     (click)="onNotificationItemClick(notificationItem, i)"></app-notification-item>
+  <div class="empty-list" *ngIf="allNotificationItems.length === 0">
+    There is no notification for today! New notifications will be generated at 7PM MON-FRI
+  </div>
 </ion-content>

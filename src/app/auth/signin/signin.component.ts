@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {validator, phoneNumberValidator} from "../../custom-validators/validator";
-import {AuthService} from "../services/auth.service";
-import {AlertController, LoadingController} from "@ionic/angular";
-import {Router} from "@angular/router";
-import {DatabaseService} from "../../shared-services/database.service";
-import {UserService} from "../services/user.service";
-import {User} from "../../models/models";
-import {NotificationService} from "../../shared-services/notification.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {validator, phoneNumberValidator} from '../../custom-validators/validator';
+import {AuthService} from '../services/auth.service';
+import {AlertController, LoadingController} from '@ionic/angular';
+import {Router} from '@angular/router';
+import {DatabaseService} from '../../shared-services/database.service';
+import {UserService} from '../services/user.service';
+import {User} from '../../models/models';
+import {NotificationService} from '../../shared-services/notification.service';
 
 @Component({
   selector: 'app-signin',
@@ -67,7 +67,6 @@ export class SigninComponent implements OnInit {
           message: err.message || 'Unknown Error'
         });
         await alertEle.present();
-        console.log('signin error', err);
       });
   }
 

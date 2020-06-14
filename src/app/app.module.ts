@@ -10,9 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
-import {DatabaseService} from "./shared-services/database.service";
 import { Push } from '@ionic-native/push/ngx';
-import {NotificationService} from "./shared-services/notification.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,8 +26,7 @@ import {NotificationService} from "./shared-services/notification.service";
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Push,
-    // NotificationService
+    Push
   ],
   bootstrap: [AppComponent]
 })

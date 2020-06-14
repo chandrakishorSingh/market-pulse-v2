@@ -26,5 +26,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <app-order-item *ngFor="let order of listedOrders" [order]="order"></app-order-item>
+  <div class="empty-list" *ngIf="allOrders.length === 0">
+    You haven't made an order yet! Make a new order in next trading day.
+  </div>
 </ion-content>
