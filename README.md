@@ -31,3 +31,29 @@ Apache Cordova & Android Studio : for transforming the web app to an android app
 [Chandrakishor Singh](https://github.com/chandrakishorSingh) : (Frontend & Backend)
 
 [Ronith Sinha](https://github.com/RonithSinha) : (Technical Analysis)
+
+# Visual Demo
+
+1. Watchlist
+
+<img src="https://github.com/chandrakishorSingh/market-pulse-v2/blob/master/demo/watchlist.gif" width="300">
+
+2. Portfolio
+
+<img src="https://github.com/chandrakishorSingh/market-pulse-v2/blob/master/demo/portfolio.gif" width="300">
+
+3. Trades
+
+<img src="https://github.com/chandrakishorSingh/market-pulse-v2/blob/master/demo/trades.gif" width="300">
+
+4. Placing an order
+
+<img src="https://github.com/chandrakishorSingh/market-pulse-v2/blob/master/demo/transaction.gif" width="300">
+
+5. Funds
+
+<img src="https://github.com/chandrakishorSingh/market-pulse-v2/blob/master/demo/funds.gif" width="300">
+
+# Useful Links
+
+1. [Backend Code Repository](https://github.com/chandrakishorSingh/lambda-functions)
