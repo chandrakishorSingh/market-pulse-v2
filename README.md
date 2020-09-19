@@ -49,6 +49,12 @@ Apache Cordova & Android Studio : for transforming the web app to an android app
 
 <img src="https://github.com/chandrakishorSingh/market-pulse-v2/blob/master/demo/funds.gif" width="300">
 
+# Team Members
+
+[Chandrakishor Singh](https://github.com/chandrakishorSingh) : (Frontend & Backend)
+
+[Ronith Sinha](https://github.com/RonithSinha) : (Technical Analysis)
+
 # Useful Links
 
 1. [Backend Code Repository](https://github.com/chandrakishorSingh/lambda-functions)
