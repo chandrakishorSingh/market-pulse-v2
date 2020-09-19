@@ -27,11 +27,6 @@ Angular : for creating the web app
 
 Apache Cordova & Android Studio : for transforming the web app to an android app
 
-# Team Members
-[Chandrakishor Singh](https://github.com/chandrakishorSingh) : (Frontend & Backend)
-
-[Ronith Sinha](https://github.com/RonithSinha) : (Technical Analysis)
-
 # Visual Demo
 
 1. Watchlist
